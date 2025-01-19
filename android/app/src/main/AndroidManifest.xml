@@ -3,7 +3,7 @@
 
     
     <application
-        android:label="healthy_recipies"
+        android:label="Healthify Us"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

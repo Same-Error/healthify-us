@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/modal/healthy.modal.dart';
+import 'package:healthy_recipies/modal/healthy_recipe_modal.dart';
 
 class DashboartdDetails extends StatelessWidget {
   final AllPosts getPost;
@@ -9,12 +9,12 @@ class DashboartdDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.amber,
         title: Text(
           "Food Details",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
         ),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -25,13 +25,15 @@ class DashboartdDetails extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height / 3,
               width: double.infinity,
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.pinkAccent),
-                  image: DecorationImage(
-                      image: NetworkImage(
-                        getPost.postImage!,
-                      ),
-                      fit: BoxFit.fitHeight)),
+                border: Border.all(color: Colors.amber),
+                image: DecorationImage(
+                    image: NetworkImage(
+                      getPost.postImage!,
+                    ),
+                    fit: BoxFit.fitHeight),
+              ),
             ),
+            SizedBox(height: 18),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -40,7 +42,7 @@ class DashboartdDetails extends StatelessWidget {
                     Text(
                       "Ingedient",
                       style: TextStyle(
-                          color: Colors.pinkAccent,
+                          color: Colors.amber,
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
@@ -58,7 +60,7 @@ class DashboartdDetails extends StatelessWidget {
                     Text(
                       "Methods",
                       style: TextStyle(
-                          color: Colors.pinkAccent,
+                          color: Colors.amber,
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),

@@ -19,23 +19,27 @@ class _LoginState extends State<Login> {
     await prefs.setString('email', email.text);
     await prefs.setString('password', password.text);
   }
-  void getData()async{
-     SharedPreferences prefs = await SharedPreferences.getInstance();
-final String? email = prefs.getString('email');
-final String? password = prefs.getString('password');
-if (email=="saad@gmail.com"&& password=="1234") {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Dashboard()));
-}else{
-  print("error");
-}
-    
 
+  void getData() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final String? email = prefs.getString('email');
+      final String? password = prefs.getString('password');
+      if (email == "sameer@gmail.com" && password == "123456") {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
+      } else {
+        print("Error");
+      }
+    } catch (e) {
+      print(e);
+    }
   }
+
   @override
   void initState() {
-    getData();
-    // TODO: implement initState
     super.initState();
+    getData();
   }
 
   @override
@@ -43,8 +47,9 @@ if (email=="saad@gmail.com"&& password=="1234") {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/login2.png"), fit: BoxFit.cover)),
+          image: DecorationImage(
+              image: AssetImage("assets/login.png"), fit: BoxFit.cover),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -53,11 +58,10 @@ if (email=="saad@gmail.com"&& password=="1234") {
               TextField(
                 controller: email,
                 decoration: InputDecoration(
-
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   labelText: "Email",
-                  hintText: "enter a valid email id ",
+                  hintText: "Enter Your Email",
                   prefixIcon: Icon(Icons.person),
                 ),
               ),
@@ -71,10 +75,9 @@ if (email=="saad@gmail.com"&& password=="1234") {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   labelText: "Password",
-                  hintText: "enter your correct password",
+                  hintText: "Enter A Password",
                   prefixIcon: GestureDetector(
                       onTap: () {
-                        print("oaajaiajiajaijaiaj");
                         obscurePass = !obscurePass;
 
                         setState(() {});
@@ -89,8 +92,8 @@ if (email=="saad@gmail.com"&& password=="1234") {
               ),
               ElevatedButton(
                   onPressed: () {
-                    if (email.text == "saad@gmail.com" &&
-                        password.text == "1234") {
+                    if (email.text == "sameer@gmail.com" &&
+                        password.text == "123456") {
                       setData();
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => Dashboard()));
