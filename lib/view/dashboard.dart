@@ -48,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     width: 16,
                   ),
-                  Text("User", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text("Sameer", style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
