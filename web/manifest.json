@@ -1,6 +1,6 @@
 {
-    "name": "healthy_recipies",
-    "short_name": "healthy_recipies",
+    "name": "healthify_us",
+    "short_name": "healthify_us",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

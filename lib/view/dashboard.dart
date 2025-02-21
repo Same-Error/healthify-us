@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/controler/healthy_controller.dart';
-import 'package:healthy_recipies/view/dashboardDetails.dart';
-import 'package:healthy_recipies/view/login.dart';
-import 'package:healthy_recipies/view/profile.dart';
+import 'package:healthify_us/controler/healthy_controller.dart';
+import 'package:healthify_us/view/dashboardDetails.dart';
+import 'package:healthify_us/view/login.dart';
+import 'package:healthify_us/view/profile.dart';
 import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
@@ -19,6 +20,7 @@ class _DashboardState extends State<Dashboard> {
 
     await prefs.remove('email');
     await prefs.remove('password');
+    await prefs.setBool('isLoggedIn', false);
   }
 
   @override
@@ -46,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     width: 16,
                   ),
-                  Text("Sheikh Sahab")
+                  Text("User", style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             ),

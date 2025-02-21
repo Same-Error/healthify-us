@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/modal/profile_buttons_modal.dart';
-import 'package:healthy_recipies/view/dashboard.dart';
+import 'package:healthify_us/modal/profile_buttons_modal.dart';
+import 'package:healthify_us/view/dashboard.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

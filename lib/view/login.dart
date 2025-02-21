@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/view/dashboard.dart';
+import 'package:healthify_us/view/dashboard.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,34 +14,17 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-  bool issuccess = true;
-  bool obscurePass = true;
-  void setData() async {
+
+  Future<void> setData() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('email', email.text);
     await prefs.setString('password', password.text);
-  }
-
-  void getData() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String? email = prefs.getString('email');
-      final String? password = prefs.getString('password');
-      if (email == "sameer@gmail.com" && password == "123456") {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Dashboard()));
-      } else {
-        print("Error");
-      }
-    } catch (e) {
-      print(e);
-    }
+    await prefs.setBool('isLoggedIn', true);
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
   }
 
   @override
@@ -61,7 +46,7 @@ class _LoginState extends State<Login> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   labelText: "Email",
-                  hintText: "Enter Your Email",
+                  hintText: "Enter Email",
                   prefixIcon: Icon(Icons.person),
                 ),
               ),
@@ -70,42 +55,33 @@ class _LoginState extends State<Login> {
               ),
               TextField(
                 controller: password,
-                obscureText: obscurePass,
+                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
                   labelText: "Password",
-                  hintText: "Enter A Password",
-                  prefixIcon: GestureDetector(
-                      onTap: () {
-                        obscurePass = !obscurePass;
-
-                        setState(() {});
-                      },
-                      child: obscurePass
-                          ? Icon(Icons.visibility)
-                          : Icon(Icons.abc)),
+                  hintText: "Enter Password",
+                  prefixIcon: Icon(Icons.password),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                  onPressed: () {
-                    if (email.text == "sameer@gmail.com" &&
-                        password.text == "123456") {
-                      setData();
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => Dashboard()));
-                      issuccess = true;
-                    } else {
-                      issuccess = false;
-                    }
-
-                    setState(() {});
-                  },
-                  child: Text("Login")),
-              issuccess ? Offstage() : Text("Error")
+                onPressed: () async {
+                  if (email.text == "sameer@gmail.com" &&
+                      password.text == "123456") {
+                    await setData();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Dashboard()),
+                    );
+                  } else {
+                    Fluttertoast.showToast(msg: "Invalid Email or Password");
+                  }
+                },
+                child: Text("Login"),
+              ),
             ],
           ),
         ),

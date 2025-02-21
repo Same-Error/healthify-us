@@ -1,4 +1,4 @@
-# healthy_recipies
+# healthify_us
 
 A new Flutter project.
 

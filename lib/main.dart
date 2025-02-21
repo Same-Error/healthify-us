@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/controler/healthy_controller.dart';
-import 'package:healthy_recipies/view/splash.dart';
+import 'package:healthify_us/controler/healthy_controller.dart';
+import 'package:healthify_us/view/splash.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,12 +16,13 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => HealthyController())],
       child: MaterialApp(
-          title: 'Healthify Us',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
-            useMaterial3: true,
-          ),
-          home: Splash()),
+        title: 'Healthify Us',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+          useMaterial3: true,
+        ),
+        home: Splash(),
+      ),
     );
   }
 }

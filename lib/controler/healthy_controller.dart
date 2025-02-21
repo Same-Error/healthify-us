@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:healthy_recipies/modal/healthy_recipe_modal.dart';
+import 'package:healthify_us/modal/healthy_recipe_modal.dart';
 
 import 'package:http/http.dart' as http;
 
